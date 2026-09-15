@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyrum Baird</title>
+<meta name="description" content="Hyrum Baird: tenor saxophonist, literary critic, and student at BYU.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎷</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #E9ECE6;
+    --ink: #1F2A36;
+    --brass: #8F6419;
+    --muted: #56636F;
+    --rule: #C3C9C0;
+    --display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #161E26;
+      --ink: #E4E7E1;
+      --brass: #D2A24C;
+      --muted: #9AA5AE;
+      --rule: #2E3A45;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #161E26;
+    --ink: #E4E7E1;
+    --brass: #D2A24C;
+    --muted: #9AA5AE;
+    --rule: #2E3A45;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+  img { max-width: 100%; }
+  a { color: var(--brass); text-underline-offset: 0.18em; }
+  a:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Hero: the name set large, like a marquee */
+  header {
+    padding: 4rem 0 3rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(4.5rem, 19vw, 13rem);
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+  }
+  h1 span { display: block; }
+  h1 span + span { padding-left: 0.6em; color: var(--brass); }
+  .lede {
+    max-width: 34rem;
+    margin: 2rem 0 0 auto;
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  /* Three sections side by side on wide screens */
+  main {
+    display: grid;
+    gap: 3rem;
+    padding: 3.5rem 0;
+  }
+  @media (min-width: 52rem) {
+    main { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    section + section { border-left: 1px solid var(--rule); padding-left: 2.5rem; }
+  }
+  h2 {
+    margin: 0 0 0.75rem;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+  section p { margin: 0 0 1rem; max-width: 36rem; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 0 3rem;
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  footer p { margin: 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1><span>Hyrum</span><span>Baird</span></h1>
+      <p class="lede">Tenor saxophonist, reader of Joyce, and student at BYU, working somewhere between music, literature, and business.</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Music</h2>
+        <p>I play tenor saxophone with BYU Synthesis, the university's competitive collegiate jazz ensemble.</p>
+      </section>
+
+      <section>
+        <h2>Writing</h2>
+        <p>My essay on James Joyce's "The Dead" appears in <em>Criterion: A Journal of Literary Criticism</em>.</p>
+        <p>I also work as a research assistant to Dr. Terryl Givens in BYU Idea Labs.</p>
+      </section>
+
+      <section>
+        <h2>Work</h2>
+        <p>I've worked at Montane Packaging, a small startup, where I got a close look at how a young company runs.</p>
+      </section>
+    </main>
+
+    <footer>
+      <!-- Replace with your real email address -->
+      <p>Get in touch at <a href="mailto:you@example.com">you@example.com</a></p>
+    </footer>
+  </div>
+</body>
+</html>
