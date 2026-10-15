@@ -5,136 +5,414 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hyrum Baird</title>
 <meta name="description" content="Hyrum Baird: tenor saxophonist, literary critic, and student at BYU.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎷</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #0D0D0D;
-    --ink: #F3E9D2;
-    --brass: #D4AF37;
-    --muted: #B8A57A;
-    --rule: #5C4A1E;
-    --display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", sans-serif;
-    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #0D0D0D;
-      --ink: #F3E9D2;
-      --brass: #D4AF37;
-      --muted: #B8A57A;
-      --rule: #5C4A1E;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #0D0D0D;
-    --ink: #F3E9D2;
-    --brass: #D4AF37;
-    --muted: #B8A57A;
-    --rule: #5C4A1E;
+    --canvas: #EFE4CC;
+    --ink: #111111;
+    --yellow: #F5C518;
+    --red: #D62718;
+    --blue: #1E4EA8;
+    --white: #FBF8F0;
+    --marker: "Permanent Marker", "Comic Sans MS", cursive;
+    --hand: "Patrick Hand", "Comic Sans MS", cursive;
   }
 
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--paper);
+    overflow-x: clip;
     color: var(--ink);
-    font-family: var(--body);
-    font-size: 1.125rem;
-    line-height: 1.65;
+    font-family: var(--hand);
+    font-size: 1.3rem;
+    line-height: 1.45;
+    /* Raw canvas: paper grain plus a few smudged washes of paint */
+    background:
+      radial-gradient(ellipse 40% 30% at 85% 8%, rgba(245, 197, 24, 0.55), transparent 70%),
+      radial-gradient(ellipse 30% 25% at 5% 55%, rgba(30, 78, 168, 0.18), transparent 70%),
+      radial-gradient(ellipse 35% 20% at 90% 92%, rgba(214, 39, 24, 0.2), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 0 0.15 0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"),
+      var(--canvas);
   }
-  img { max-width: 100%; }
-  a { color: var(--brass); text-underline-offset: 0.18em; }
-  a:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  a { color: inherit; text-decoration-thickness: 3px; text-underline-offset: 0.2em; }
+  a:focus-visible { outline: 3px dashed var(--red); outline-offset: 4px; }
 
   .wrap {
-    max-width: 68rem;
+    position: relative;
+    max-width: 70rem;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
 
-  /* Hero: the name set large, like a marquee */
-  header {
-    padding: 4rem 0 3rem;
-    border-bottom: 3px solid var(--brass);
+  /* Scrawled marks: strike-throughs, copyright signs, crowns */
+  s { text-decoration: none; position: relative; }
+  s::after {
+    content: "";
+    position: absolute;
+    left: -0.1em; right: -0.1em; top: 52%;
+    height: 0.14em;
+    background: currentColor;
+    transform: rotate(-3deg);
+    border-radius: 2px;
+  }
+  .c { font-size: 0.45em; vertical-align: super; }
+  .rough { filter: url(#rough); }
+
+  /* Header: crown over a name written big and crooked */
+  header { padding: 3rem 0 2rem; position: relative; }
+  .crown {
+    display: block;
+    width: clamp(6rem, 22vw, 12rem);
+    margin: 0 0 -0.5rem 0.25rem;
+    transform: rotate(-6deg);
   }
   h1 {
     margin: 0;
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: clamp(4.5rem, 19vw, 13rem);
-    line-height: 0.82;
-    letter-spacing: -0.01em;
+    font-family: var(--marker);
+    font-weight: 400;
+    font-size: clamp(4rem, 17vw, 11.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
   }
-  h1 span { display: block; }
-  h1 span + span { padding-left: 0.6em; color: var(--brass); }
+  h1 span { display: inline-block; }
+  h1 .first { transform: rotate(-2deg); }
+  h1 .last {
+    display: block;
+    width: fit-content;
+    margin-left: 0.5em;
+    color: var(--red);
+    transform: rotate(1.5deg);
+  }
   .lede {
-    max-width: 34rem;
-    margin: 2rem 0 0 auto;
-    font-size: 1.3rem;
-    line-height: 1.5;
+    max-width: 38rem;
+    margin: 1.75rem 0 0 auto;
+    font-family: var(--marker);
+    font-size: clamp(1.25rem, 3.4vw, 1.7rem);
+    line-height: 1.35;
+    text-transform: uppercase;
+    transform: rotate(-1deg);
   }
 
-  /* Three sections side by side on wide screens */
+  /* Big background scrawls, purely decorative */
+  .scrawl {
+    position: absolute;
+    font-family: var(--marker);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.85;
+  }
+  .scrawl.bop { top: 2.5rem; right: 0.5rem; font-size: clamp(1.4rem, 4vw, 2.6rem); color: var(--blue); transform: rotate(9deg); }
+  /* Three painted panels */
   main {
     display: grid;
-    gap: 3rem;
-    padding: 3.5rem 0;
+    gap: 2.75rem;
+    padding: 2rem 0 3.5rem;
   }
-  @media (min-width: 52rem) {
-    main { grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-    section + section { border-left: 1px solid var(--rule); padding-left: 2.5rem; }
+  @media (min-width: 54rem) {
+    main { grid-template-columns: repeat(3, 1fr); gap: 2.25rem; align-items: start; }
+    section:nth-child(2) { margin-top: 3rem; }
+    section:nth-child(3) { margin-top: 1rem; }
   }
+  section {
+    position: relative;
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+  /* The panel's paint and its wobbly hand-drawn outline sit behind the text */
+  section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 5px solid var(--ink);
+    filter: url(#rough);
+  }
+  .music { transform: rotate(-1.5deg); }
+  .music::before { background: var(--yellow); }
+  .writing { transform: rotate(1.2deg); color: var(--white); }
+  .writing::before { background: var(--blue); }
+  .work { transform: rotate(-0.8deg); color: var(--white); }
+  .work::before { background: var(--red); }
+
   h2 {
-    margin: 0 0 0.75rem;
-    font-family: var(--display);
-    font-weight: 500;
-    font-size: 2.4rem;
+    margin: 0 0 0.5rem;
+    font-family: var(--marker);
+    font-weight: 400;
+    font-size: 2.6rem;
     line-height: 1;
+    text-transform: uppercase;
   }
-  section p { margin: 0 0 1rem; max-width: 36rem; }
+  section p { margin: 0 0 0.9rem; }
+  section p:last-child { margin-bottom: 0; }
+  .tag {
+    position: absolute;
+    top: -1.1rem;
+    right: 1rem;
+    padding: 0.1rem 0.6rem;
+    font-family: var(--marker);
+    font-size: 1rem;
+    background: var(--ink);
+    color: var(--white);
+    transform: rotate(4deg);
+  }
+
+  /* Gigs: a black panel listing shows pulled live from Google Calendar */
+  .gigs {
+    margin: 0 0 3rem;
+    padding: 2rem 1.5rem 1.75rem;
+    color: var(--white);
+    transform: rotate(0.5deg);
+  }
+  .gigs::before { background: var(--ink); }
+  .gigs h2 { color: var(--yellow); font-size: clamp(2.8rem, 9vw, 4.75rem); }
+  .gig-list {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+  .gig {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1.1rem;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 3px dashed rgba(251, 248, 240, 0.3);
+  }
+  .gig:last-child { border-bottom: 0; padding-bottom: 0; }
+  .gig-date {
+    padding: 0.45rem 0.3rem 0.35rem;
+    font-family: var(--marker);
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    background: var(--yellow);
+    color: var(--ink);
+    transform: rotate(-3deg);
+  }
+  .gig:nth-child(3n+2) .gig-date { background: var(--red); color: var(--white); transform: rotate(2deg); }
+  .gig:nth-child(3n) .gig-date { background: var(--blue); color: var(--white); transform: rotate(-1deg); }
+  .gig-month { display: block; font-size: 1.1rem; }
+  .gig-day { display: block; font-size: 2.6rem; }
+  .gig-title {
+    margin: 0;
+    font-family: var(--marker);
+    font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+  .gig-meta { margin: 0.2rem 0 0; font-size: 1.2rem; opacity: 0.9; }
+  .gig-meta a { color: var(--yellow); }
+  .gig.past { opacity: 0.5; }
+  .gig.past .gig-title { text-decoration: line-through; text-decoration-thickness: 4px; }
+  .gig-status { font-family: var(--marker); font-size: 1.4rem; text-transform: uppercase; }
+  .gig-note { margin: 1.25rem 0 0; font-size: 1rem; opacity: 0.7; }
 
   footer {
-    border-top: 1px solid var(--rule);
-    padding: 2rem 0 3rem;
-    color: var(--muted);
-    font-size: 1rem;
+    position: relative;
+    padding: 1.5rem 0 3.5rem;
+    font-family: var(--marker);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    text-transform: uppercase;
   }
-  footer p { margin: 0; }
+  footer p { margin: 0; transform: rotate(-1deg); }
+  footer a { color: var(--blue); }
+  footer .arrow { color: var(--red); }
 </style>
 </head>
 <body>
+  <!-- Filter that roughens edges so lines look painted by hand -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="9"/>
+    </filter>
+  </svg>
+
   <div class="wrap">
     <header>
-      <h1><span>Hyrum</span><span>Baird</span></h1>
-      <p class="lede">Tenor saxophonist, reader of Joyce, and student at BYU, working somewhere between music, literature, and business.</p>
+      <span class="scrawl bop" aria-hidden="true">BEBOP™</span>
+      <svg class="crown rough" viewBox="0 0 120 80" aria-hidden="true" focusable="false">
+        <path d="M14 66 L22 22 L44 52 L60 10 L76 52 L98 22 L106 66 Z" fill="none" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M18 66 L104 66" stroke="#F5C518" stroke-width="10"/>
+        <circle cx="22" cy="18" r="5" fill="#111"/>
+        <circle cx="60" cy="6" r="5" fill="#111"/>
+        <circle cx="98" cy="18" r="5" fill="#111"/>
+      </svg>
+      <h1><span class="first">Hyrum</span><span class="last">Baird<span class="c">©</span></span></h1>
+      <p class="lede">Tenor saxophonist. Reader of Joyce. Student at BYU. Working somewhere between music, literature, and <s aria-hidden="true">business</s> business.</p>
     </header>
 
     <main>
-      <section>
-        <h2>Music</h2>
+      <section class="music">
+        <span class="tag" aria-hidden="true">TENOR</span>
+        <h2>Music<span class="c">™</span></h2>
         <p>I play tenor saxophone with BYU Synthesis, the university's competitive collegiate jazz ensemble.</p>
       </section>
 
-      <section>
-        <h2>Writing</h2>
+      <section class="writing">
+        <span class="tag" aria-hidden="true">"THE DEAD"</span>
+        <h2>Writing<span class="c">©</span></h2>
         <p>My essay on James Joyce's "The Dead" appears in <em>Criterion: A Journal of Literary Criticism</em>.</p>
         <p>I also work as a research assistant to Dr. Terryl Givens in BYU Idea Labs.</p>
       </section>
 
-      <section>
-        <h2>Work</h2>
+      <section class="work">
+        <span class="tag" aria-hidden="true">STARTUP</span>
+        <h2><s aria-hidden="true">Job</s> Work</h2>
         <p>I've worked at Montane Packaging, a small startup, where I got a close look at how a young company runs.</p>
       </section>
     </main>
 
+    <section class="gigs" aria-labelledby="gigs-heading">
+      <span class="tag" aria-hidden="true">LIVE</span>
+      <h2 id="gigs-heading">Gigs<span class="c">™</span></h2>
+      <ol class="gig-list" id="gig-list">
+        <li class="gig-status">Loading…</li>
+      </ol>
+    </section>
+
     <footer>
       <!-- Replace with your real email address -->
-      <p>Get in touch at <a href="mailto:you@example.com">you@example.com</a></p>
+      <p>Get in touch <span class="arrow" aria-hidden="true">→</span> <a href="mailto:you@example.com">you@example.com</a></p>
     </footer>
   </div>
+
+  <script>
+  // Gigs come from the public "Gigs" calendar in Google Calendar.
+  // Add an event there (even from your phone) and it shows up here on the next page load.
+  (function () {
+    const CALENDAR_ID = "089e2d1bf478747ed4516d07508622526ab7394a55574b9c022dec10d8f907ba@group.calendar.google.com";
+    const API_KEY = "AIzaSyDTNXo1zxMiOaAIL87a2IanZwWY7vc-KyQ";
+    const MAX_UPCOMING = 12;
+    const MAX_PAST = 3;           // recent past gigs, shown crossed out
+    const PAST_WINDOW_DAYS = 90;
+
+    const list = document.getElementById("gig-list");
+    const now = new Date();
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text != null) node.textContent = text;
+      return node;
+    }
+
+    function fmt(date, opts) {
+      return new Intl.DateTimeFormat("en-US", opts).format(date);
+    }
+
+    // All-day events have only a date, so read it in UTC to keep the day from shifting.
+    function dateParts(ev, tz) {
+      if (ev.start.date) {
+        const [y, m, d] = ev.start.date.split("-").map(Number);
+        const day = new Date(Date.UTC(y, m - 1, d, 12));
+        return {
+          month: fmt(day, { month: "short", timeZone: "UTC" }),
+          day: String(d),
+          weekday: fmt(day, { weekday: "short", timeZone: "UTC" }),
+          time: null
+        };
+      }
+      const start = new Date(ev.start.dateTime);
+      return {
+        month: fmt(start, { month: "short", timeZone: tz }),
+        day: fmt(start, { day: "numeric", timeZone: tz }),
+        weekday: fmt(start, { weekday: "short", timeZone: tz }),
+        time: fmt(start, { hour: "numeric", minute: "2-digit", timeZone: tz })
+      };
+    }
+
+    function endOf(ev) {
+      return new Date(ev.end.dateTime || ev.end.date);
+    }
+
+    function renderGig(ev, tz, isPast) {
+      const p = dateParts(ev, tz);
+      const li = el("li", "gig" + (isPast ? " past" : ""));
+
+      const date = el("div", "gig-date");
+      date.append(el("span", "gig-month", p.month), el("span", "gig-day", p.day));
+
+      const info = el("div");
+      info.append(el("h3", "gig-title", ev.summary || "Gig"));
+      const meta = el("p", "gig-meta");
+      meta.append([p.weekday, p.time].filter(Boolean).join(" · "));
+      if (ev.location) {
+        meta.append(" · ");
+        const a = el("a", null, ev.location.split(",")[0]);
+        a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ev.location);
+        a.target = "_blank";
+        a.rel = "noopener";
+        meta.append(a);
+      }
+      info.append(meta);
+
+      li.append(date, info);
+      return li;
+    }
+
+    function render(items, tz, note) {
+      const upcoming = items.filter(ev => endOf(ev) >= now).slice(0, MAX_UPCOMING);
+      const past = items.filter(ev => endOf(ev) < now).slice(-MAX_PAST).reverse();
+
+      list.replaceChildren();
+      if (!upcoming.length) {
+        list.append(el("li", "gig-status", "No gigs on the books. Check back soon."));
+      }
+      upcoming.forEach(ev => list.append(renderGig(ev, tz, false)));
+      past.forEach(ev => list.append(renderGig(ev, tz, true)));
+      if (note) list.after(el("p", "gig-note", note));
+    }
+
+    // Example gigs, used only when previewing the file on your computer and the real
+    // calendar can't be read (Google only answers requests from hyrumbaird.com) or is empty.
+    function sampleItems() {
+      const at = (days, hour) => {
+        const d = new Date(now);
+        d.setDate(d.getDate() + days);
+        d.setHours(hour, 0, 0, 0);
+        return d.toISOString();
+      };
+      const ev = (title, days, hour, location) => ({
+        summary: title,
+        location,
+        start: { dateTime: at(days, hour) },
+        end: { dateTime: at(days, hour + 2) }
+      });
+      return [
+        ev("Synthesis at the Jazz Festival", -20, 19, "de Jong Concert Hall, Provo, UT"),
+        ev("Late set, quartet", 6, 21, "Velour Live Music Gallery, Provo, UT"),
+        ev("BYU Synthesis fall concert", 14, 19, "de Jong Concert Hall, Provo, UT"),
+        ev("Jam session", 22, 20, "Sundance Mountain Resort, UT")
+      ];
+    }
+
+    const url = "https://www.googleapis.com/calendar/v3/calendars/" + encodeURIComponent(CALENDAR_ID) +
+      "/events?key=" + API_KEY +
+      "&singleEvents=true&orderBy=startTime&maxResults=50" +
+      "&timeMin=" + encodeURIComponent(new Date(now - PAST_WINDOW_DAYS * 864e5).toISOString());
+
+    const isLocalPreview = location.protocol === "file:";
+    const showSamples = () =>
+      render(sampleItems(), "America/Denver", "Preview: these are sample gigs. The live site shows your real calendar.");
+
+    fetch(url)
+      .then(res => { if (!res.ok) throw new Error(res.status); return res.json(); })
+      .then(data => {
+        const items = data.items || [];
+        if (isLocalPreview && !items.length) return showSamples();
+        render(items, data.timeZone || "America/Denver");
+      })
+      .catch(() => {
+        if (isLocalPreview) return showSamples();
+        list.replaceChildren(el("li", "gig-status", "Couldn't load gigs right now."));
+      });
+  })();
+  </script>
 </body>
 </html>
