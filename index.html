@@ -122,6 +122,23 @@
     text-transform: uppercase;
     color: var(--brass);
   }
+  .gig:has(.gig-tickets) { grid-template-columns: 4.5rem 1fr auto; }
+  .gig-tickets {
+    padding: 0.45rem 0.9rem;
+    border: 1.5px solid var(--brass);
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .gig-tickets:hover { background: var(--brass); color: var(--paper); }
+  @media (max-width: 30rem) {
+    .gig:has(.gig-tickets) { grid-template-columns: 4.5rem 1fr; }
+    .gig-tickets { grid-column: 2; justify-self: start; }
+  }
   .gig-month { display: block; font-size: 1.05rem; font-weight: 500; letter-spacing: 0.08em; }
   .gig-day { display: block; font-size: 2.75rem; font-weight: 800; }
   .gig-title { margin: 0; font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
@@ -171,6 +188,17 @@
     const MAX_PAST = 3;           // recent past gigs, shown crossed out
     const PAST_WINDOW_DAYS = 90;
 
+    // Ticket links for BYU Synthesis concerts, by concert date.
+    // A Synthesis gig on one of these dates gets a Tickets button.
+    const TICKETS = {
+      "2026-10-23": "https://byutickets.evenue.net/events/6007",
+      "2026-10-31": "https://www.tickettailor.com/events/byufamilyconcerts/2372026",
+      "2026-11-18": "https://byutickets.evenue.net/events/6018",
+      "2027-02-20": "https://byutickets.evenue.net/events/6032",
+      "2027-02-21": "https://byutickets.evenue.net/events/6032", // Ellington, in case the calendar has it a day late
+      "2027-03-31": "https://byutickets.evenue.net/events/6043"
+    };
+
     const list = document.getElementById("gig-list");
     const now = new Date();
 
@@ -216,6 +244,13 @@
       return parts.join(", ") || location;
     }
 
+    // The gig's start date as "YYYY-MM-DD" in the calendar's time zone.
+    function dateKey(ev, tz) {
+      if (ev.start.date) return ev.start.date;
+      return new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit" })
+        .format(new Date(ev.start.dateTime));
+    }
+
     function endOf(ev) {
       return new Date(ev.end.dateTime || ev.end.date);
     }
@@ -240,8 +275,16 @@
         meta.append(a);
       }
       info.append(meta);
-
       li.append(date, info);
+
+      const ticketUrl = !isPast && /synthesis/i.test(ev.summary || "") && TICKETS[dateKey(ev, tz)];
+      if (ticketUrl) {
+        const t = el("a", "gig-tickets", "Tickets");
+        t.href = ticketUrl;
+        t.target = "_blank";
+        t.rel = "noopener";
+        li.append(t);
+      }
       return li;
     }
 
